@@ -4,17 +4,14 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
+
+	html_templating "github.com/SabianF/gopher-web/features/core/data/repos"
 )
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Received request for " + r.URL.Path)
-	root_page, err := os.ReadFile("features/core/presentation/templates/layout.html")
-	if (err != nil) {
-		panic(err)
-	}
-	w.Write(root_page)
+	root_page := html_templating.ParseFiles(nil, "./features/core/presentation/templates/layout.html")
+	w.Write(root_page.Bytes())
 }
 
 func main() {
