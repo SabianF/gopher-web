@@ -6,12 +6,21 @@ import (
 	"net/http"
 	"strconv"
 
-	html_templating "github.com/SabianF/gopher-web/features/core/data/repos"
+	"github.com/SabianF/gopher-web/features/core/presentation/templates"
 )
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-	root_page := html_templating.ParseFiles(nil, "./features/core/presentation/templates/layout.html")
-	w.Write(root_page.Bytes())
+	layout_data := templates.LayoutData{
+		Title: "The Title",
+		MetaDescription: "This is the meta description.",
+		PageHeader: "<h1>Page Header</h1>",
+		PageBody: "<p>Page body.</p>",
+		PageFooter: "<h2>Page Footer</h2>",
+	}
+
+	root_page := templates.Layout(layout_data)
+
+	w.Write([]byte(root_page))
 }
 
 func main() {

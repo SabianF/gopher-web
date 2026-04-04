@@ -1,24 +1,25 @@
-package html_templating
+package data_repos
 
 import (
 	"bytes"
 	"html/template"
 )
 
-func getBufferFromTemplate(data any, tmpl *template.Template) bytes.Buffer {
+func getStringFromTemplate(data any, tmpl *template.Template) string {
 	var buf bytes.Buffer
 	tmpl.Execute(&buf, data)
-	return buf
+	str := buf.String()
+	return str
 }
 
-func ParseFiles(data any, filenames ...string) bytes.Buffer {
+func ParseFiles(data any, filenames ...string) string {
 	tmpl := template.Must(template.ParseFiles(filenames...))
-	buf := getBufferFromTemplate(data, tmpl)
-	return buf
+	str := getStringFromTemplate(data, tmpl)
+	return str
 }
 
-func Parse(data any, text string) bytes.Buffer {
+func Parse(data any, text string) string {
 	tmpl := template.Must(template.ParseGlob(text))
-	buf := getBufferFromTemplate(data, tmpl)
-	return buf
+	str := getStringFromTemplate(data, tmpl)
+	return str
 }
