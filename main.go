@@ -16,8 +16,13 @@ func init() {
 	pages = make(map[string]*template.Template)
 
 	pages["home"] = template.Must(template.ParseFiles(
-		data_repos.GetRootPath() + "/features/core/presentation/templates/pages/home.html",
 		data_repos.GetRootPath() + "/features/core/presentation/templates/components/layout.html",
+		data_repos.GetRootPath() + "/features/core/presentation/templates/pages/home.html",
+	))
+
+	pages["not found"] = template.Must(template.ParseFiles(
+		data_repos.GetRootPath() + "/features/core/presentation/templates/components/layout.html",
+		data_repos.GetRootPath() + "/features/core/presentation/templates/pages/not_found.html",
 	))
 }
 
@@ -28,8 +33,22 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func notFoundHandler(w http.ResponseWriter, r *http.Request) {
+	data := struct {
+		Url string
+	} {
+		Url: r.URL.String(),
+	}
+
+	err := pages["not found"].ExecuteTemplate(w, "layout", data)
+	if (err != nil) {
+		fmt.Printf("%v", err)
+	}
+}
+
 func main() {
-	http.HandleFunc("/", rootHandler)
+	http.HandleFunc("/dashboard", rootHandler)
+	http.HandleFunc("/", notFoundHandler)
 
 	PORT := 3000
 	fmt.Printf("Running server on port %d\n", PORT)

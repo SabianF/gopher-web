@@ -5,22 +5,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{block "title" .}}{{end}}</title>
-    <meta name="description" content='{{block "meta_description" .}}{{end}}' />
+    <title>{{block "title" .}}Page Title Placeholder{{end}}</title>
+    <meta name="description" content='{{block "meta_description" .}}Meta description placeholder.{{end}}' />
   </head>
   <body>
     <header>
       {{- block "header" . -}}
-        <h1>Page Header</h1>
+        <h1 style="padding-top: 16px; padding-bottom: 16px; background-color: lightblue;">Page Header Placeholder</h1>
       {{- end -}}
     </header>
     <main>
-      {{- block "body" . -}}
-      {{- end -}}
+      <header>
+        {{- block "side_menu" . -}}
+          <h2>Side Menu</h2>
+          <nav>
+            <ul>
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/pages">Pages</a></li>
+            </ul>
+          </nav>
+        {{- end -}}
+      </header>
+      <main>
+        {{- block "body" . -}}
+          <h1 style="padding-top: 16px; padding-bottom: 16px; background-color: lightblue;">Page Body Placeholder</h1>
+        {{- end -}}
+      </main>
+      <footer></footer>
     </main>
     <footer>
       {{- block "footer" . -}}
-        <h1>Page Footer</h1>
+        <h1 style="padding-top: 16px; padding-bottom: 16px; background-color: lightblue;">Page Footer Placeholder</h1>
       {{- end -}}
     </footer>
   </body>

@@ -1,0 +1,12 @@
+{{- define "title" -}} Not Found {{- end -}} {{- define "meta_description" -}}
+Not found. {{- end -}} {{- define "body" -}}
+<article>
+  <header>
+    <h1>Not Found</h1>
+    <code>{{.Url}}</code>
+  </header>
+  <main>
+    <p>These are not the droids you're looking for.</p>
+  </main>
+</article>
+{{- end -}}
