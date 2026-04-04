@@ -5,6 +5,8 @@ import (
 	"html/template"
 )
 
+type Template template.Template
+
 func getStringFromTemplate(data any, tmpl *template.Template) string {
 	var buf bytes.Buffer
 	tmpl.Execute(&buf, data)

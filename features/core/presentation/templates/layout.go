@@ -5,9 +5,7 @@ import data_repos "github.com/SabianF/gopher-web/features/core/data/repos"
 type LayoutData struct {
 	Title           string
 	MetaDescription string
-	PageHeader      string
-	PageBody        string
-	PageFooter      string
+	PageBody        any
 }
 
 func Layout(data LayoutData) string {

@@ -13,9 +13,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	layout_data := templates.LayoutData{
 		Title: "The Title",
 		MetaDescription: "This is the meta description.",
-		PageHeader: "<h1>Page Header</h1>",
 		PageBody: "<p>Page body.</p>",
-		PageFooter: "<h2>Page Footer</h2>",
 	}
 
 	root_page := templates.Layout(layout_data)

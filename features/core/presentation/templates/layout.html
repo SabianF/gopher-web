@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>gopher-web</title>
-    <meta name="description" content="This is the placeholder meta description.">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <!-- <script defer src=""></script> -->
+    <title>{{.Title}}</title>
+    <meta name="description" content="{{.MetaDescription}}">
   </head>
   <body>
-    <header>Header placeholder</header>
-    <main>Page body placeholder</main>
-    <footer>Footer placeholder</footer>
+    <header>
+      {{template "header" .}}
+    </header>
+    <main>
+      {{.PageBody}}
+    </main>
+    <footer>
+      {{template "footer" .}}
+    </footer>
   </body>
 </html>
+
+{{- define "header" -}}
+  <h1>Page Header</h1>
+{{- end -}}
+
+{{- define "footer" -}}
+  <h1>Page Footer</h1>
+{{- end -}}
