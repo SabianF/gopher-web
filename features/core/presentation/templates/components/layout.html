@@ -1,0 +1,28 @@
+{{- block "layout" . -}}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{block "title" .}}{{end}}</title>
+    <meta name="description" content='{{block "meta_description" .}}{{end}}' />
+  </head>
+  <body>
+    <header>
+      {{- block "header" . -}}
+        <h1>Page Header</h1>
+      {{- end -}}
+    </header>
+    <main>
+      {{- block "body" . -}}
+      {{- end -}}
+    </main>
+    <footer>
+      {{- block "footer" . -}}
+        <h1>Page Footer</h1>
+      {{- end -}}
+    </footer>
+  </body>
+</html>
+{{- end -}}
