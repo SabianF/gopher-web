@@ -1,4 +1,4 @@
-package project_path
+package root_path
 
 import (
 	"path/filepath"
