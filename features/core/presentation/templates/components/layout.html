@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{block "title" .}}Page Title Placeholder{{end}}</title>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/features/core/data/sources/public/gopher.svg">
     <meta name="description" content='{{block "meta_description" .}}Meta description placeholder.{{end}}' />
+    <script src="/features/core/data/sources/public/htmx.2.0.8.min.js"></script>
   </head>
   <body>
     <header>
@@ -18,7 +20,7 @@
       <header>
         {{- block "side_menu" . -}}
           <h2>Side Menu</h2>
-          <nav>
+          <nav hx-boost="true">
             <ul>
               <li><a href="/dashboard">Dashboard</a></li>
               <li><a href="/pages">Pages</a></li>
