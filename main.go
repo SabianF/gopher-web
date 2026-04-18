@@ -24,6 +24,11 @@ func init() {
 		core_pages_dir + "home.html",
 	))
 
+	pages["dashboard"] = template.Must(template.ParseFiles(
+		layout_path,
+		core_pages_dir + "dashboard.html",
+	))
+
 	pages["not found"] = template.Must(template.ParseFiles(
 		layout_path,
 		core_pages_dir + "not_found.html",
@@ -31,7 +36,7 @@ func init() {
 }
 
 func handleDashboard(w http.ResponseWriter, r *http.Request) {
-	err := pages["home"].ExecuteTemplate(w, "layout", nil)
+	err := pages["dashboard"].ExecuteTemplate(w, "layout", nil)
 	if (err != nil) {
 		fmt.Printf("%v", err)
 	}
