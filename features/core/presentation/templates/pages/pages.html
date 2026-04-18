@@ -1,0 +1,28 @@
+{{- define "title" -}}
+  pages
+{{- end -}}
+
+{{- define "meta_description" -}}
+  The page management dashboard.
+{{- end -}}
+
+{{- define "body" -}}
+  <h1>Pages</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Slug</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Test page</td>
+        <td>test-page</td>
+        <td>Placeholder content</td>
+      </tr>
+    </tbody>
+  </table>
+  <button hx-get="/api/add-page">Add page</button>
+{{- end -}}

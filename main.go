@@ -29,6 +29,11 @@ func init() {
 		core_pages_dir + "dashboard.html",
 	))
 
+	pages["pages"] = template.Must(template.ParseFiles(
+		layout_path,
+		core_pages_dir + "pages.html",
+	))
+
 	pages["not found"] = template.Must(template.ParseFiles(
 		layout_path,
 		core_pages_dir + "not_found.html",
@@ -37,6 +42,13 @@ func init() {
 
 func handleDashboard(w http.ResponseWriter, r *http.Request) {
 	err := pages["dashboard"].ExecuteTemplate(w, "layout", nil)
+	if (err != nil) {
+		fmt.Printf("%v", err)
+	}
+}
+
+func handlePages(w http.ResponseWriter, r *http.Request) {
+	err := pages["pages"].ExecuteTemplate(w, "layout", nil)
 	if (err != nil) {
 		fmt.Printf("%v", err)
 	}
@@ -72,6 +84,7 @@ func main() {
 
 	http.HandleFunc("/", handleRoot)
 	http.HandleFunc("/dashboard", handleDashboard)
+	http.HandleFunc("/pages", handlePages)
 
 	PORT := 3000
 	fmt.Printf("Running server on port %d\n", PORT)
