@@ -38,6 +38,9 @@ A fast, modern CMS built with HTMX and Go
       - [ ] Database
       - [ ] CRUD API
       - [ ] Page editor
+        - [ ] Title
+        - [ ] Slug
+        - [ ] HTML
     - [ ] Default homepage placeholder
     - [ ] Homepage displays on root route
 - [ ] **Media content management**
