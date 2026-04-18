@@ -44,7 +44,15 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 		Url: r.URL.String(),
 	}
 
-	err := pages["not found"].ExecuteTemplate(w, "layout", data)
+	if (data.Url != "/") {
+		err := pages["not found"].ExecuteTemplate(w, "layout", data)
+		if (err != nil) {
+			fmt.Printf("%v", err)
+		}
+		return
+	}
+
+	err := pages["home"].ExecuteTemplate(w, "layout", data)
 	if (err != nil) {
 		fmt.Printf("%v", err)
 	}
