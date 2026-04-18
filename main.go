@@ -26,14 +26,14 @@ func init() {
 	))
 }
 
-func rootHandler(w http.ResponseWriter, r *http.Request) {
+func handleDashboard(w http.ResponseWriter, r *http.Request) {
 	err := pages["home"].ExecuteTemplate(w, "layout", nil)
 	if (err != nil) {
 		fmt.Printf("%v", err)
 	}
 }
 
-func notFoundHandler(w http.ResponseWriter, r *http.Request) {
+func handleRoot(w http.ResponseWriter, r *http.Request) {
 	data := struct {
 		Url string
 	} {
@@ -52,8 +52,8 @@ func main() {
 	core_fs_stripped := http.StripPrefix("/public/core/", core_fs)
 	http.Handle("/public/core/", core_fs_stripped)
 
-	http.HandleFunc("/dashboard", rootHandler)
-	http.HandleFunc("/", notFoundHandler)
+	http.HandleFunc("/", handleRoot)
+	http.HandleFunc("/dashboard", handleDashboard)
 
 	PORT := 3000
 	fmt.Printf("Running server on port %d\n", PORT)
