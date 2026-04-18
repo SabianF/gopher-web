@@ -50,6 +50,7 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if (data.Url != "/") {
+		w.WriteHeader(http.StatusNotFound)
 		err := pages["not found"].ExecuteTemplate(w, "layout", data)
 		if (err != nil) {
 			fmt.Printf("%v", err)
