@@ -49,8 +49,8 @@ func notFoundHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	core_pub_dir := http.Dir("./features/core/data/sources/public")
 	core_fs := http.FileServer(core_pub_dir)
-	core_fs_stripped := http.StripPrefix("/features/core/data/sources/public/", core_fs)
-	http.Handle("/features/core/data/sources/public/", core_fs_stripped)
+	core_fs_stripped := http.StripPrefix("/public/core/", core_fs)
+	http.Handle("/public/core/", core_fs_stripped)
 
 	http.HandleFunc("/dashboard", rootHandler)
 	http.HandleFunc("/", notFoundHandler)
