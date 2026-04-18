@@ -34,7 +34,7 @@ A fast, modern CMS built with HTMX and Go
     - [x] Static file server
     - [x] Admin dashboard page
     - [ ] Pages dashboard page
-      - [ ] HTML page
+      - [x] HTML page
       - [ ] Database
       - [ ] CRUD API
       - [ ] Page editor
