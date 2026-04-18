@@ -13,16 +13,20 @@ import (
 var pages map[string]*template.Template
 
 func init() {
+	root_dir := data_repos.GetRootPath()
+	core_pages_dir := root_dir + "/features/core/presentation/templates/pages/"
+	layout_path := root_dir + "/features/core/presentation/templates/components/layout.html"
+
 	pages = make(map[string]*template.Template)
 
 	pages["home"] = template.Must(template.ParseFiles(
-		data_repos.GetRootPath() + "/features/core/presentation/templates/components/layout.html",
-		data_repos.GetRootPath() + "/features/core/presentation/templates/pages/home.html",
+		layout_path,
+		core_pages_dir + "home.html",
 	))
 
 	pages["not found"] = template.Must(template.ParseFiles(
-		data_repos.GetRootPath() + "/features/core/presentation/templates/components/layout.html",
-		data_repos.GetRootPath() + "/features/core/presentation/templates/pages/not_found.html",
+		layout_path,
+		core_pages_dir + "not_found.html",
 	))
 }
 
