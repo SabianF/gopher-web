@@ -1,4 +1,4 @@
-# gopher-web (Go for web)
+# Gopher Web (Go for web)
 A fast, modern CMS built with HTMX and Go
 
 # Roadmap
