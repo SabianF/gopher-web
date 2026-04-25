@@ -11,17 +11,19 @@
   <table>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Slug</th>
-        <th>Content</th>
+        {{- range .Headings -}}
+          <td>{{.}}</td>
+        {{- end -}}
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Test page</td>
-        <td>test-page</td>
-        <td>Placeholder content</td>
-      </tr>
+      {{- range .Rows -}}
+        <tr>
+          {{- range . -}}
+            <td>{{.}}</td>
+          {{- end -}}
+        </tr>
+      {{- end -}}
     </tbody>
   </table>
   <button hx-get="/api/add-page">Add page</button>

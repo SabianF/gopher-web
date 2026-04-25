@@ -48,7 +48,22 @@ func handleDashboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func handlePages(w http.ResponseWriter, r *http.Request) {
-	err := pages["pages"].ExecuteTemplate(w, "layout", nil)
+	pages_data := struct {
+		Headings []string
+		Rows [][]string
+	}{
+		Headings: []string{
+			"Title",
+			"Slug",
+			"Content",
+		},
+		Rows: [][]string{
+			{"One", "one", "This is page one."},
+			{"Two", "two", "This is page two."},
+			{"Three", "three", "This is page three."},
+		},
+	}
+	err := pages["pages"].ExecuteTemplate(w, "layout", pages_data)
 	if (err != nil) {
 		fmt.Printf("%v", err)
 	}
